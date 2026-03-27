@@ -50,10 +50,11 @@ def insert_to_db(df):
         # 假設 md5Key 是 PK
         cursor.execute(f"SELECT uid FROM dbo.{table_name}")
         existing = {row[0] for row in cursor.fetchall()}
-        df = df[~df['md5Key'].isin(existing)]
+        print(f"過滤前共有 {len(df)} 筆資料，資料庫中已有 {len(existing)} 筆資料")
+        df = df[~df['uid'].isin(existing)]
         print(f"過濾後剩 {len(df)} 筆新資料需要寫入資料庫...")
         #將 DataFrame 轉 list of tuples
-        records = df[['md5Key', 'title', 'link', 'published']].values.tolist()
+        records = df[['uid', 'title', 'link', 'published']].values.tolist()
         records_tuples = [tuple(x) for x in records]
         #print(f"準備寫入 {len(records_tuples)} 筆資料到資料庫...")
         #寫入資料
