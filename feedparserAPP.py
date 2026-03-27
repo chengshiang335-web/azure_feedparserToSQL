@@ -15,6 +15,7 @@ import datetime
 
 
 def main():
+    print("version: 2024-06-17 15:00")
     #rss_url = "https://rss.app/feeds/4puCMmnqU1SmJB9v.xml"
     rss_url = "https://news.google.com/rss/search?q=Donald+Trump&site:cnn.com&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
 
