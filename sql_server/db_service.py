@@ -4,6 +4,7 @@ import json
 import pymssql
 import sys
 import logging
+import lineMsg as lineMsg
 
 # 將上一層目錄加入系統路徑，以讀取 configLoader
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -74,3 +75,6 @@ def insert_to_db(df):
         if connect:
             connect.close()
         logging.info("資料庫連線已關閉")
+
+        for msg in df['title']:
+            lineMsg.send_line(msg)
