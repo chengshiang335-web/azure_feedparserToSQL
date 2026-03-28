@@ -18,8 +18,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 def main():
-    logging.info("version: 2024-06-17 22:00 by python")   
-    print("version: 2024-06-17 15:00")
+    logging.info("version: ver 1.0.1_ by python")   
+    print("version: ver 1.0.1_")
 
     rss_url = "https://news.google.com/rss/search?q=Donald+Trump&site:cnn.com&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
     feed = feedparser.parse(rss_url)
