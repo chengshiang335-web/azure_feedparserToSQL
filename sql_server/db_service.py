@@ -21,7 +21,7 @@ import logging
 import pymssql
 
 
-def get_conn(retry=3, delay=3, timeout=5):
+def get_conn(retry=5, delay=5, timeout=5):
     """
     建立 SQL Server 連線（含重試 + 喚醒檢查）
     """
