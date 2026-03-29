@@ -26,6 +26,7 @@ def load_db_config(config_path: str = None) -> dict:
     password = os.environ.get('DB_PASSWORD', '')
     database = os.environ.get('DB_NAME', 'testdb')
     table_name = os.environ.get('TABLE_NAME', 'News')
+    line_user_id = os.environ.get('LINE_USER_ID')
 
     if not server:
         print("環境變數中缺少資料庫必要設定 (DB_SERVER)")
@@ -36,6 +37,7 @@ def load_db_config(config_path: str = None) -> dict:
         'user': user,
         'password': password,
         'database': database,
-        'table_name': table_name
+        'table_name': table_name,
+        'line_user_id': line_user_id    
     }
  
