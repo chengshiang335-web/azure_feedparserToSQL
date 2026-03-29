@@ -8,6 +8,7 @@ import logging
 import pandas as pd
 import feedparser
 
+
 # 將上一層目錄加入系統路徑
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -18,8 +19,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 
 def main():
-    logging.info("version: ver 1.0.1_ by python")   
-    print("version: ver 1.0.1_")
+    #logging.info("version: ver 1.1.0_ by python")   
+    print("version: ver 1.1.0_")
 
     rss_url = "https://news.google.com/rss/search?q=Donald+Trump&site:cnn.com&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
     feed = feedparser.parse(rss_url)
@@ -45,11 +46,11 @@ def main():
                 "uid": hashlib.md5(entry.get("link", "").encode()).hexdigest()
             })
         else:
-            logging.warning(f"第 {countFreed} 筆資料缺少 published_parsed 欄位，已跳過。")
+            print (f"第 {countFreed} 筆資料缺少 published_parsed 欄位，已跳過。")
 
-    logging.info(f"countFreed: {countFreed}")
-    logging.info(f"len(feed.entries): {len(feed.entries)}")
-    logging.info(f"總共處理了 {len(data)} 筆資料")
+    print(f"countFreed: {countFreed}")
+    print(f"len(feed.entries): {len(feed.entries)}")
+    print(f"總共處理了 {len(data)} 筆資料")
 
     df = pd.DataFrame(data)
 
