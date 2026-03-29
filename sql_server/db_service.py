@@ -109,11 +109,17 @@ def insert_to_db(df):
                 cursor.executemany(INS_SQL, records_tuples)
                 connect.commit()
                 print(f"資料寫入完畢，共寫入 {len(records_tuples)} 筆")
+
+                titles = df['title'].tolist()
+                msg = os.linesep.join(titles)  # 依作業系統換行
+                print(msg)
+                lineMsg.send_line(msg, line_user_id)
+
             else:
                 print("沒有新資料需要寫入")
 
         except Exception as e:
-            print("資料庫操作發生錯誤", exc_info=True)
+            print(f"資料庫操作發生錯誤  {e}")
 
         finally:
             if cursor:
@@ -122,10 +128,7 @@ def insert_to_db(df):
                 connect.close()
             print("資料庫連線已關閉")
 
-            titles = df['title'].tolist()
-            msg = os.linesep.join(titles)  # 依作業系統換行
-            print(msg)
-            lineMsg.send_line(msg, line_user_id)
+
     else:
         print("資料庫連線失敗")
         return "資料庫連線失敗"
